@@ -17,9 +17,11 @@ namespace API.Extensions
             });
 
             services.AddMediatR(typeof(AddProductHandler).Assembly);
-            //services.AddAutoMapper(typeof(Application.Core.MappingProfiles).Assembly);
+
 
             services.AddSingleton<IInventoryRepository, InventoryRepository>();
+            services.AddSingleton<ICompanyRepository, CompanyRepository>();
+            services.AddSingleton<IProductRepository, ProductRepository>();
 
             return services;
          }

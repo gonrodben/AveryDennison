@@ -21,8 +21,6 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProduct(AddProductCommand createProductCommand)
         {
-            _logger.LogInformation();
-
             var result = await Mediator.Send(createProductCommand);
             return HandleResult(result);
         }

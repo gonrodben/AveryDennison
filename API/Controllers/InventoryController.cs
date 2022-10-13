@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Core;
 using Application.Inventories;
+using Application.Inventories.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,16 +26,26 @@ namespace API.Controllers
             return HandleResult(result);
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetPatients([FromQuery] PatientParams param ){
+        [HttpGet("CountByProductAndInventory")]
+        public async Task<IActionResult> GetCountByProductAndInventory(CountByProductAndInventory query)
+        {
+            var result = await Mediator.Send(query);
+            return HandleResult(result);
+        }
 
+        [HttpGet("GetCountByProductAndDate")]
+        public async Task<IActionResult> GetCountByProductAndDate(CountByProductAndDate query)
+        {
+            var result = await Mediator.Send(query);
+            return HandleResult(result);
+        }
 
-        //    _logger.LogInformation("Get Patients executed at {date}", DateTime.UtcNow);
-
-        //    var result = await Mediator.Send(new ListPatientsQuery{Params = param});
-        //    return Result(result);
-        //}
-
+        [HttpGet("GetCountByCompany")]
+        public async Task<IActionResult> GetCountByCompany(CountByCompany query)
+        {
+            var result = await Mediator.Send(query);
+            return HandleResult(result);
+        }
 
     }
 }
